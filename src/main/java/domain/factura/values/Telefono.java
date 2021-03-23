@@ -14,7 +14,7 @@ public class Telefono implements ValueObject<String> {
             throw new IllegalArgumentException("El telefono no debe estar vacio");
         }
     }
-    
+
     @Override
     public String value() {
         return value;
