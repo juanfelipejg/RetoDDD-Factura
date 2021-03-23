@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class Iva implements ValueObject<Float> {
 
-    private final Float iva;
+    private final Float value;
 
     public Iva (Float iva){
-        this.iva = Objects.requireNonNull(iva);
+        this.value = Objects.requireNonNull(iva);
     }
 
     @Override
     public Float value() {
-        return null;
+        return value;
     }
 }
