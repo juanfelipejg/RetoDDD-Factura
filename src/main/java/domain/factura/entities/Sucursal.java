@@ -1,6 +1,10 @@
-package domain.factura.values;
+package domain.factura.entities;
 
 import co.com.sofka.domain.generic.Entity;
+import domain.factura.values.Ciudad;
+import domain.factura.values.Direccion;
+import domain.factura.values.SucursalId;
+import domain.factura.values.Telefono;
 
 public class Sucursal extends Entity<SucursalId> {
 

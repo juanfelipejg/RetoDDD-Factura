@@ -1,4 +1,4 @@
-package domain.factura;
+package domain.factura.entities;
 
 import co.com.sofka.domain.generic.Entity;
 import domain.factura.values.Descripcion;

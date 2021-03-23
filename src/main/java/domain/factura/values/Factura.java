@@ -1,9 +1,9 @@
 package domain.factura.values;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.domain.generic.ValueObject;
-import domain.factura.Cliente;
-import domain.factura.Producto;
+import domain.factura.entities.Cliente;
+import domain.factura.entities.Producto;
+import domain.factura.entities.Sucursal;
 import domain.factura.events.FacturaCreada;
 
 import java.util.List;
