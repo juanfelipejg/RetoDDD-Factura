@@ -1,10 +1,10 @@
-package domain.factura.entities;
+package org.example.supermercado.domain.entities;
 
 import co.com.sofka.domain.generic.Entity;
-import domain.factura.values.Cedula;
-import domain.factura.values.ClienteId;
-import domain.factura.values.Nombre;
-import domain.factura.values.Telefono;
+import org.example.supermercado.domain.values.Cedula;
+import org.example.supermercado.domain.values.ClienteId;
+import org.example.supermercado.domain.values.Nombre;
+import org.example.supermercado.domain.values.Telefono;
 
 public class Cliente extends Entity<ClienteId> {
 

@@ -1,7 +1,7 @@
-package domain.factura.events;
+package org.example.supermercado.domain.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.factura.values.FacturaId;
+import org.example.supermercado.domain.values.FacturaId;
 
 public class FacturaCreada extends DomainEvent {
 

@@ -1,4 +1,4 @@
-package domain.factura.values;
+package org.example.supermercado.domain.values;
 
 import co.com.sofka.domain.generic.Identity;
 

@@ -1,7 +1,7 @@
-package domain.factura.commands;
+package org.example.supermercado.domain.commands;
 
 import co.com.sofka.domain.generic.Command;
-import domain.factura.values.FacturaId;
+import org.example.supermercado.domain.values.FacturaId;
 
 public class CrearFactura implements Command {
 

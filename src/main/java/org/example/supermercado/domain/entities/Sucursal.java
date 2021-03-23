@@ -1,10 +1,10 @@
-package domain.factura.entities;
+package org.example.supermercado.domain.entities;
 
 import co.com.sofka.domain.generic.Entity;
-import domain.factura.values.Ciudad;
-import domain.factura.values.Direccion;
-import domain.factura.values.SucursalId;
-import domain.factura.values.Telefono;
+import org.example.supermercado.domain.values.Ciudad;
+import org.example.supermercado.domain.values.Direccion;
+import org.example.supermercado.domain.values.SucursalId;
+import org.example.supermercado.domain.values.Telefono;
 
 public class Sucursal extends Entity<SucursalId> {
 

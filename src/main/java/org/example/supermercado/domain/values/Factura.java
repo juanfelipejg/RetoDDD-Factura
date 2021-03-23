@@ -1,10 +1,10 @@
-package domain.factura.values;
+package org.example.supermercado.domain.values;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import domain.factura.entities.Cliente;
-import domain.factura.entities.Producto;
-import domain.factura.entities.Sucursal;
-import domain.factura.events.FacturaCreada;
+import org.example.supermercado.domain.entities.Sucursal;
+import org.example.supermercado.domain.events.FacturaCreada;
+import org.example.supermercado.domain.entities.Cliente;
+import org.example.supermercado.domain.entities.Producto;
 
 import java.util.List;
 
