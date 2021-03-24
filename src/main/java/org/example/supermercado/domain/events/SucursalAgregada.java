@@ -8,6 +8,7 @@ import org.example.supermercado.domain.values.Telefono;
 
 public class SucursalAgregada extends DomainEvent {
 
+    private final SucursalId sucursalId;
     private final Ciudad ciudad;
     private final Telefono telefono;
     private final Direccion direccion;
@@ -15,9 +16,14 @@ public class SucursalAgregada extends DomainEvent {
 
     public SucursalAgregada(SucursalId sucursalId, Ciudad ciudad, Telefono telefono, Direccion direccion) {
         super("sucursal.agregada");
+        this.sucursalId = sucursalId;
         this.ciudad = ciudad;
         this.telefono = telefono;
         this.direccion = direccion;
+    }
+
+    public SucursalId getSucursalId() {
+        return sucursalId;
     }
 
     public Ciudad getCiudad() {
