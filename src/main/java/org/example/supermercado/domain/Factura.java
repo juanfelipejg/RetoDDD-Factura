@@ -7,6 +7,7 @@ import org.example.supermercado.domain.events.ClienteRegistrado;
 import org.example.supermercado.domain.events.FacturaCreada;
 import org.example.supermercado.domain.entities.Cliente;
 import org.example.supermercado.domain.entities.Producto;
+import org.example.supermercado.domain.events.ProductoAgregado;
 import org.example.supermercado.domain.values.*;
 
 import java.util.List;
@@ -42,7 +43,8 @@ public class Factura extends AggregateEvent<FacturaId> {
         appendChange(new ClienteRegistrado(clienteId, nombre, cedula, telefono));
     }
 
-    public void agregarProducto(){
+    public void agregarProducto(ProductoId productoId, Nombre nombre, Valor precio, Descripcion descripcion){
+        appendChange(new ProductoAgregado(productoId, nombre, precio, descripcion));
 
     }
 
