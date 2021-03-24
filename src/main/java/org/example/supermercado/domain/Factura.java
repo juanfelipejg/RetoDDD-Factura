@@ -20,6 +20,7 @@ public class Factura extends AggregateEvent<FacturaId> {
     protected Valor total;
     protected Valor subtotal;
     protected Valor descuento;
+    protected Boolean estaGenerada;
 
     public Factura(FacturaId facturaId, Fecha fecha){
         super(facturaId);
@@ -102,5 +103,9 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     public Valor getDescuento() {
         return descuento;
+    }
+
+    public Boolean getEstaGenerada() {
+        return estaGenerada;
     }
 }

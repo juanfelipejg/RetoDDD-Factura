@@ -15,6 +15,10 @@ public class RegistrarProductoUseCase extends UseCase<RequestCommand<AgregarProd
         var command = agregarProductoRequestCommand.getCommand();
         var factura = Factura.from(command.getFacturaId(), retrieveEvents());
 
+        if(factura.getEstaGenerada()){
+            throw new BusinessException(factura.identity().value(), "No puede agregar un producto a una factura generada");
+        }
+
         try{
             factura.agregarProducto(command.getProductoId(), command.getNombre(), command.getPrecio(), command.getDescripcion());
             emit().onResponse(new ResponseEvents(factura.getUncommittedChanges()));

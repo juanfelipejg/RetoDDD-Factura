@@ -10,6 +10,7 @@ public class CrearFacturaUseCase extends UseCase<RequestCommand<CrearFactura>, R
 
     @Override
     public void executeUseCase(RequestCommand<CrearFactura> crearFacturaRequestCommand) {
+
         var command = crearFacturaRequestCommand.getCommand();
 
         var factura = new Factura(command.getFacturaId(),command.getFecha());

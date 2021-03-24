@@ -15,6 +15,10 @@ public class RegistrarSucursalUseCase extends UseCase<RequestCommand<AgregarSucu
         var command = agregarSucursalRequestCommand.getCommand();
         var factura = Factura.from(command.getFacturaId(), retrieveEvents());
 
+        if(factura.getEstaGenerada()){
+            throw new BusinessException(factura.identity().value(), "No puede agregar una Sucursal a una factura generada");
+        }
+
         try{
             factura.agregarSucursal(command.getSucursalId(),command.getCiudad(),command.getTelefono(),command.getDireccion());
             emit().onResponse(new ResponseEvents(factura.getUncommittedChanges()));
