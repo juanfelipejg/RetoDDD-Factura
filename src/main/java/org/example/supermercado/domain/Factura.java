@@ -1,14 +1,13 @@
 package org.example.supermercado.domain;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import org.example.supermercado.domain.entities.Sucursal;
+import org.example.supermercado.domain.events.ClienteRegistrado;
 import org.example.supermercado.domain.events.FacturaCreada;
 import org.example.supermercado.domain.entities.Cliente;
 import org.example.supermercado.domain.entities.Producto;
-import org.example.supermercado.domain.values.FacturaId;
-import org.example.supermercado.domain.values.Fecha;
-import org.example.supermercado.domain.values.Iva;
-import org.example.supermercado.domain.values.Valor;
+import org.example.supermercado.domain.values.*;
 
 import java.util.List;
 
@@ -28,8 +27,19 @@ public class Factura extends AggregateEvent<FacturaId> {
         appendChange(new FacturaCreada(facturaId,fecha)).apply();
     }
 
-    public void agregarDatosCliente(){
+    private Factura(FacturaId facturaId){
+        super(facturaId);
+        subscribe(new FacturaChange(this));
+    }
 
+    public static Factura from(FacturaId facturaId, List<DomainEvent> events) {
+        var factura = new Factura(facturaId);
+        events.forEach(factura::applyEvent);
+        return factura;
+    }
+
+    public void agregarDatosCliente(ClienteId clienteId, Nombre nombre, Cedula cedula,Telefono telefono){
+        appendChange(new ClienteRegistrado(clienteId, nombre, cedula, telefono));
     }
 
     public void agregarProducto(){

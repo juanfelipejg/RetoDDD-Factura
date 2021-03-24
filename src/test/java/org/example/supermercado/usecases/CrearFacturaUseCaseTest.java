@@ -31,7 +31,7 @@ class CrearFacturaUseCaseTest {
 
         Assertions.assertTrue(Objects.nonNull(event.getFacturaId().value()));
         Assertions.assertEquals("23/03/2021", event.getFecha().value());
-        
+
 
     }
 
