@@ -3,12 +3,9 @@ package org.example.supermercado.domain;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.supermercado.domain.entities.Sucursal;
-import org.example.supermercado.domain.events.ClienteRegistrado;
-import org.example.supermercado.domain.events.FacturaCreada;
+import org.example.supermercado.domain.events.*;
 import org.example.supermercado.domain.entities.Cliente;
 import org.example.supermercado.domain.entities.Producto;
-import org.example.supermercado.domain.events.ProductoAgregado;
-import org.example.supermercado.domain.events.SucursalAgregada;
 import org.example.supermercado.domain.values.*;
 
 import java.util.List;
@@ -66,7 +63,8 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     }
 
-    public void eliminarProducto(){
+    public void eliminarProducto(ProductoId productoId){
+        appendChange(new ProductoEliminado(productoId)).apply();
 
     }
 
@@ -74,4 +72,35 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public Iva getIva() {
+        return iva;
+    }
+
+    public Fecha getFecha() {
+        return fecha;
+    }
+
+    public Valor getTotal() {
+        return total;
+    }
+
+    public Valor getSubtotal() {
+        return subtotal;
+    }
+
+    public Valor getDescuento() {
+        return descuento;
+    }
 }
