@@ -6,12 +6,16 @@ import org.example.supermercado.domain.entities.Producto;
 import org.example.supermercado.domain.entities.Sucursal;
 import org.example.supermercado.domain.events.*;
 
+import java.util.HashMap;
+
 public class FacturaChange extends EventChange {
 
     public FacturaChange(Factura factura){
 
         apply((FacturaCreada event) -> {
             factura.fecha = event.getFecha();
+            factura.estaGenerada = Boolean.FALSE;
+            factura.productos = new HashMap<>();
         });
 
         apply((ClienteRegistrado event) -> {
@@ -19,8 +23,9 @@ public class FacturaChange extends EventChange {
         });
 
         apply((ProductoAgregado event) -> {
-            factura.productos.add(new Producto(event.getProductoId(), event.getNombre(),
-                    event.getPrecio(), event.getDescripcion()));
+            var producto = new Producto(event.getProductoId(), event.getNombre(),
+                    event.getPrecio(), event.getDescripcion());
+            factura.productos.put(event.getProductoId(),producto);
         });
 
         apply((SucursalAgregada event) -> {

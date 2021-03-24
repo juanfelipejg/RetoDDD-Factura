@@ -9,11 +9,12 @@ import org.example.supermercado.domain.entities.Producto;
 import org.example.supermercado.domain.values.*;
 
 import java.util.List;
+import java.util.Map;
 
 public class Factura extends AggregateEvent<FacturaId> {
 
     protected Cliente cliente;
-    protected List<Producto> productos;
+    protected Map<ProductoId,Producto> productos;
     protected Sucursal sucursal;
     protected Iva iva;
     protected Fecha fecha;
@@ -77,7 +78,7 @@ public class Factura extends AggregateEvent<FacturaId> {
         return cliente;
     }
 
-    public List<Producto> getProductos() {
+    public Map<ProductoId,Producto> getProductos() {
         return productos;
     }
 

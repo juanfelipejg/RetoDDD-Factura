@@ -7,7 +7,6 @@ import co.com.sofka.business.support.ResponseEvents;
 import org.example.supermercado.domain.Factura;
 import org.example.supermercado.domain.commands.EliminarProducto;
 
-import java.net.CookieManager;
 
 public class EliminarProductoUseCase extends UseCase<RequestCommand<EliminarProducto>, ResponseEvents> {
 
