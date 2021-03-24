@@ -11,7 +11,7 @@ public class ProductoEliminado extends DomainEvent {
         super("producto.eliminado");
         this.productoId = productoId;
     }
-    
+
     public ProductoId getProductoId() {
         return productoId;
     }

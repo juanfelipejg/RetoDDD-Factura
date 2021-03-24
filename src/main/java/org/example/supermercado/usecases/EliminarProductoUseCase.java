@@ -7,6 +7,8 @@ import co.com.sofka.business.support.ResponseEvents;
 import org.example.supermercado.domain.Factura;
 import org.example.supermercado.domain.commands.EliminarProducto;
 
+import java.net.CookieManager;
+
 public class EliminarProductoUseCase extends UseCase<RequestCommand<EliminarProducto>, ResponseEvents> {
 
     @Override
@@ -18,11 +20,13 @@ public class EliminarProductoUseCase extends UseCase<RequestCommand<EliminarProd
         if(factura.getProductos().size() < 1) {
             throw new BusinessException(factura.identity().value(), "Debe de existir al menos un producto");
         }
+
         try{
-            factura.eliminarProducto();
+            factura.eliminarProducto(command.getProductoId());
+            emit().onResponse(new ResponseEvents(factura.getUncommittedChanges()));
+        }catch(RuntimeException e){
+            emit().onError(new BusinessException(factura.identity().value(), e.getMessage()));
         }
-
-
 
     }
 }
