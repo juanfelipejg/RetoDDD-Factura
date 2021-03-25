@@ -1,15 +1,14 @@
 package org.example.supermercado.usecases;
 
+import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.supermercado.domain.commands.CalcularDescuento;
-import org.example.supermercado.domain.commands.EliminarProducto;
 import org.example.supermercado.domain.events.DescuentoCalculado;
 import org.example.supermercado.domain.events.FacturaCreada;
 import org.example.supermercado.domain.events.ProductoAgregado;
-import org.example.supermercado.domain.events.ProductoEliminado;
 import org.example.supermercado.domain.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -49,6 +48,35 @@ class CalcularDescuentoUseCaseTest {
 
         Assertions.assertEquals(6,event.getDescuento().value());
     }
+
+    @Test
+    void errorCalcularDescuento(){
+
+        var facturaId = FacturaId.of("xxx");
+        var fecha = new Fecha("24/03/2021");
+        var command = new CalcularDescuento(facturaId);
+        var useCase = new CalcularDescuentoUseCase();
+
+        when(repository.getEventsBy(facturaId.value())).thenReturn(eventStoredAlt(facturaId,fecha));
+        useCase.addRepository(repository);
+
+        Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(facturaId.value())
+                    .syncExecutor(useCase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+    }
+
+    private List<DomainEvent> eventStoredAlt(FacturaId facturaId, Fecha fecha) {
+
+        return List.of(
+                new FacturaCreada(facturaId,fecha)
+        );
+    }
+
+
 
     private List<DomainEvent> eventStored(FacturaId facturaId, Fecha fecha) {
 
