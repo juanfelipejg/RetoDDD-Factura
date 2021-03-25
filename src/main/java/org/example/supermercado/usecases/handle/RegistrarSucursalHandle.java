@@ -1,5 +1,7 @@
 package org.example.supermercado.usecases.handle;
 
+import co.com.sofka.business.annotation.CommandHandles;
+import co.com.sofka.business.annotation.CommandType;
 import co.com.sofka.business.asyn.UseCaseExecutor;
 import co.com.sofka.business.support.RequestCommand;
 import org.example.supermercado.domain.commands.AgregarSucursal;
@@ -9,6 +11,8 @@ import org.example.supermercado.usecases.RegistrarSucursalUseCase;
 import java.util.Map;
 import java.util.Objects;
 
+@CommandHandles
+@CommandType(name = "supermercado.factura.registrarSucursal", aggregate = "factura")
 public class RegistrarSucursalHandle extends UseCaseExecutor {
 
     private RequestCommand<AgregarSucursal> request;
