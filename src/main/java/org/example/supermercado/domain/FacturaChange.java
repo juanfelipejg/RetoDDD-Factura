@@ -28,10 +28,15 @@ public class FacturaChange extends EventChange {
         });
 
         apply((ProductoAgregado event) -> {
-            var producto = new Producto(event.getProductoId(), event.getNombre(),
-                    event.getPrecio(), event.getDescripcion());
-            factura.productos.put(event.getProductoId(),producto);
-            factura.subtotal = new Valor(factura.subtotal.value() + event.getPrecio().value());
+            factura.productos.put(event.getProductoId(),
+                    new Producto(event.getProductoId(),
+                            event.getNombre(),
+                            event.getPrecio(),
+                            event.getDescripcion()));
+        });
+
+        apply((SubtotalCalculado event) -> {
+            factura.subtotal = event.getSubtotal();
         });
 
         apply((SucursalAgregada event) -> {

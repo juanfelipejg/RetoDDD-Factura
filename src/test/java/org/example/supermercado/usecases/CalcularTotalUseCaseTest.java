@@ -4,10 +4,7 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.TriggeredEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.supermercado.domain.events.DescuentoCalculado;
-import org.example.supermercado.domain.events.FacturaCreada;
-import org.example.supermercado.domain.events.ProductoAgregado;
-import org.example.supermercado.domain.events.TotalCalculado;
+import org.example.supermercado.domain.events.*;
 import org.example.supermercado.domain.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -66,6 +63,7 @@ class CalcularTotalUseCaseTest {
         return List.of(
                 new FacturaCreada(facturaId,fecha),
                 new ProductoAgregado(productoId,nombreProducto,precio,descripcion),
+                new SubtotalCalculado(new Valor(400000)),
                 new DescuentoCalculado(descuento)
         );
     }

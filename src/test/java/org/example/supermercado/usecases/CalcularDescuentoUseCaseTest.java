@@ -9,6 +9,7 @@ import org.example.supermercado.domain.commands.CalcularDescuento;
 import org.example.supermercado.domain.events.DescuentoCalculado;
 import org.example.supermercado.domain.events.FacturaCreada;
 import org.example.supermercado.domain.events.ProductoAgregado;
+import org.example.supermercado.domain.events.SubtotalCalculado;
 import org.example.supermercado.domain.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -86,7 +87,8 @@ class CalcularDescuentoUseCaseTest {
 
         return List.of(
                 new FacturaCreada(facturaId,fecha),
-                new ProductoAgregado(productoId,nombreProducto,precio,descripcion)
+                new ProductoAgregado(productoId,nombreProducto,precio,descripcion),
+                new SubtotalCalculado(new Valor(400000))
         );
     }
 

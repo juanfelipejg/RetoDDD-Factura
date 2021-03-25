@@ -16,4 +16,12 @@ public class Valor implements ValueObject<Integer> {
     public Integer value() {
         return value;
     }
+
+    public Valor incrementar(Integer valor){
+        return new Valor(this.value() + valor);
+    }
+
+    public Valor reducir(Integer valor){
+        return new Valor(this.value() - valor);
+    }
 }
