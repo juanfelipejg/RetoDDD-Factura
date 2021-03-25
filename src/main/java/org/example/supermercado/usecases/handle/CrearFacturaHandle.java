@@ -18,7 +18,6 @@ public class CrearFacturaHandle extends UseCaseExecutor {
 
     private RequestCommand<CrearFactura> request;
 
-
     @Override
     public void run() {
         runUseCase(new CrearFacturaUseCase(), request);
