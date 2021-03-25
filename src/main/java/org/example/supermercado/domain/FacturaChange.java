@@ -54,5 +54,9 @@ public class FacturaChange extends EventChange {
         apply((TotalCalculado event) -> {
             factura.total = event.getTotal();
         });
+
+        apply((PuntosAsignados event) -> {
+            factura.puntos = event.getPuntos();
+        });
     }
 }

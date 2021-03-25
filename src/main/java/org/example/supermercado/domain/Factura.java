@@ -21,6 +21,7 @@ public class Factura extends AggregateEvent<FacturaId> {
     protected Valor total;
     protected Valor subtotal;
     protected Valor descuento;
+    protected Valor puntos;
     protected Boolean estaGenerada;
 
     public Factura(FacturaId facturaId, Fecha fecha){
@@ -54,10 +55,6 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     }
 
-    public void calcularSubtotal(){
-
-    }
-
     public void calcularTotal(Valor total){
         appendChange(new TotalCalculado(total)).apply();
     }
@@ -71,6 +68,10 @@ public class Factura extends AggregateEvent<FacturaId> {
         appendChange(new ProductoEliminado(productoId)).apply();
         appendChange(new SubtotalCalculado());
 
+    }
+
+    public void asignarPuntos(Valor puntos){
+        appendChange(new PuntosAsignados(puntos)).apply();
     }
 
     public void generarFactura(){
