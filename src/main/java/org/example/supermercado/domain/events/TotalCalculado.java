@@ -5,14 +5,14 @@ import org.example.supermercado.domain.values.Valor;
 
 public class TotalCalculado extends DomainEvent {
 
-    private final Valor descuento;
+    private final Valor total;
 
     public TotalCalculado(Valor descuento) {
         super("total.calculado");
-        this.descuento = descuento;
+        this.total = descuento;
     }
 
-    public Valor getDescuento() {
-        return descuento;
+    public Valor getTotal() {
+        return total;
     }
 }

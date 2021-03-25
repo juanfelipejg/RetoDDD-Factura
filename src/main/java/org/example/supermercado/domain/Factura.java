@@ -45,7 +45,7 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     public void agregarProducto(ProductoId productoId, Nombre nombre, Valor precio, Descripcion descripcion){
         appendChange(new ProductoAgregado(productoId, nombre, precio, descripcion));
-        appendChange(new SubtotalCalculado());
+        //appendChange(new SubtotalCalculado());
 
     }
 
@@ -58,9 +58,8 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     }
 
-    public void calcularTotal(Valor descuento){
-        appendChange(new TotalCalculado(descuento)).apply();
-
+    public void calcularTotal(Valor total){
+        appendChange(new TotalCalculado(total)).apply();
     }
 
     public void calcularDescuento(Valor descuento){

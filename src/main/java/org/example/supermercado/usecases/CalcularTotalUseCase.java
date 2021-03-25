@@ -7,6 +7,7 @@ import co.com.sofka.business.support.TriggeredEvent;
 import org.example.supermercado.domain.Factura;
 import org.example.supermercado.domain.events.DescuentoCalculado;
 import org.example.supermercado.domain.values.FacturaId;
+import org.example.supermercado.domain.values.Valor;
 
 public class CalcularTotalUseCase extends UseCase<TriggeredEvent<DescuentoCalculado>, ResponseEvents> {
 
@@ -16,8 +17,11 @@ public class CalcularTotalUseCase extends UseCase<TriggeredEvent<DescuentoCalcul
         var event = descuentoCalculadoTriggeredEvent.getDomainEvent();
         var factura = Factura.from(FacturaId.of(event.aggregateRootId()), retrieveEvents());
 
+        float calculo = factura.getSubtotal().value() + (factura.getSubtotal().value() * factura.getIva().value());
+        var total = new Valor((int) calculo) ;
+
         try{
-            factura.calcularTotal(event.getDescuento());
+            factura.calcularTotal(total);
             emit().onResponse(new ResponseEvents(factura.getUncommittedChanges()));
         }catch(RuntimeException e){
             emit().onError(new BusinessException(factura.identity().value(), e.getMessage()));

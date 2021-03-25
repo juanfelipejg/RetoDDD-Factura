@@ -77,7 +77,6 @@ class CalcularDescuentoUseCaseTest {
     }
 
 
-
     private List<DomainEvent> eventStored(FacturaId facturaId, Fecha fecha) {
 
         var productoId = ProductoId.of("xxx");

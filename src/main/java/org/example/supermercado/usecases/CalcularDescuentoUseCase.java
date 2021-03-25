@@ -23,6 +23,7 @@ public class CalcularDescuentoUseCase extends UseCase<RequestCommand<CalcularDes
         }
 
         var descuento = new Valor(3 * (subtotal/200000));
+        
         try{
             if(descuento.value() >= 15){
                 factura.calcularDescuento(new Valor(0));
