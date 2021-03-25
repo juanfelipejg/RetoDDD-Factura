@@ -2,7 +2,6 @@ package org.example.supermercado.domain.commands;
 
 import co.com.sofka.domain.generic.Command;
 import org.example.supermercado.domain.values.FacturaId;
-import org.example.supermercado.domain.values.Valor;
 
 public class CalcularDescuento implements Command {
 

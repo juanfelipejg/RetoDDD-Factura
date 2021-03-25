@@ -1,7 +1,6 @@
 package org.example.supermercado.domain.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.supermercado.domain.values.FacturaId;
 import org.example.supermercado.domain.values.Valor;
 
 public class DescuentoCalculado extends DomainEvent {

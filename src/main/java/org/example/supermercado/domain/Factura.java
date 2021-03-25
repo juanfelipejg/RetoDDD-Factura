@@ -61,7 +61,8 @@ public class Factura extends AggregateEvent<FacturaId> {
 
     }
 
-    public void calcularDescuento(){
+    public void calcularDescuento(Valor descuento){
+        appendChange(new DescuentoCalculado(descuento)).apply();
 
     }
 

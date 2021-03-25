@@ -5,6 +5,7 @@ import org.example.supermercado.domain.entities.Cliente;
 import org.example.supermercado.domain.entities.Producto;
 import org.example.supermercado.domain.entities.Sucursal;
 import org.example.supermercado.domain.events.*;
+import org.example.supermercado.domain.values.Valor;
 
 import java.util.HashMap;
 
@@ -34,6 +35,11 @@ public class FacturaChange extends EventChange {
 
         apply((ProductoEliminado event) -> {
             factura.productos.remove(event.getProductoId());
+        });
+
+        apply((DescuentoCalculado event) -> {
+            var descuento = event.getDescuento().value() / 100;
+            factura.subtotal = new Valor(factura.subtotal.value() - (factura.subtotal.value() * descuento));
         });
     }
 }

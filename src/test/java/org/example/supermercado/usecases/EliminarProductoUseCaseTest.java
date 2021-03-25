@@ -1,5 +1,6 @@
 package org.example.supermercado.usecases;
 
+import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
@@ -49,8 +50,9 @@ class EliminarProductoUseCaseTest {
 
         Assertions.assertEquals("vvv",event.getProductoId().value());
 
-
     }
+
+
 
     private List<DomainEvent> eventStored(FacturaId facturaId, Fecha fecha,ProductoId productoId) {
 
