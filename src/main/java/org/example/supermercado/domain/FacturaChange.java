@@ -17,6 +17,7 @@ public class FacturaChange extends EventChange {
             factura.fecha = event.getFecha();
             factura.estaGenerada = Boolean.FALSE;
             factura.productos = new HashMap<>();
+            factura.subtotal = new Valor(0);
         });
 
         apply((ClienteRegistrado event) -> {
@@ -27,6 +28,7 @@ public class FacturaChange extends EventChange {
             var producto = new Producto(event.getProductoId(), event.getNombre(),
                     event.getPrecio(), event.getDescripcion());
             factura.productos.put(event.getProductoId(),producto);
+            factura.subtotal = new Valor(factura.subtotal.value() + event.getPrecio().value());
         });
 
         apply((SucursalAgregada event) -> {
