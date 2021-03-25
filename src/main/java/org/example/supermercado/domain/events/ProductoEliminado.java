@@ -8,7 +8,7 @@ public class ProductoEliminado extends DomainEvent {
     private final ProductoId productoId;
 
     public ProductoEliminado(ProductoId productoId) {
-        super("producto.eliminado");
+        super("supermercado.factura.productoEliminado");
         this.productoId = productoId;
     }
 

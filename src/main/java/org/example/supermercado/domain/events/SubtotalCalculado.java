@@ -8,7 +8,7 @@ public class SubtotalCalculado extends DomainEvent {
     private final Valor subtotal;
 
     public SubtotalCalculado(Valor subtotal) {
-        super("subtotal.calculado");
+        super("supermercado.factura.subtotalCalculado");
         this.subtotal = subtotal;
     }
 

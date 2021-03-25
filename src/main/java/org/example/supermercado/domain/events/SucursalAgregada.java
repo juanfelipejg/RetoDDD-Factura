@@ -15,7 +15,7 @@ public class SucursalAgregada extends DomainEvent {
 
 
     public SucursalAgregada(SucursalId sucursalId, Ciudad ciudad, Telefono telefono, Direccion direccion) {
-        super("sucursal.agregada");
+        super("supermercado.factura.sucursalAgregada");
         this.sucursalId = sucursalId;
         this.ciudad = ciudad;
         this.telefono = telefono;

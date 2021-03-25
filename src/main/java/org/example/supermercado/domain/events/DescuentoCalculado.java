@@ -8,7 +8,7 @@ public class DescuentoCalculado extends DomainEvent {
     private final Valor descuento;
 
     public DescuentoCalculado(Valor descuento) {
-        super("descuento.calculado");
+        super("supermercado.factura.descuentoCalculado");
         this.descuento = descuento;
     }
 

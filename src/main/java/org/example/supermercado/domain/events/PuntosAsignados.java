@@ -8,7 +8,7 @@ public class PuntosAsignados extends DomainEvent {
     private final Valor puntos;
 
     public PuntosAsignados(Valor puntos) {
-        super("puntos.asignados");
+        super("supermercado.factura.puntosAsignados");
         this.puntos = puntos;
     }
 

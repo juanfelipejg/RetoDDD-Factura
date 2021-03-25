@@ -11,7 +11,7 @@ public class FacturaCreada extends DomainEvent {
 
 
     public FacturaCreada(FacturaId facturaId, Fecha fecha) {
-        super("factura.creada");
+        super("supermercado.factura.facturaCreada");
         this.facturaId = facturaId;
         this.fecha = fecha;
     }

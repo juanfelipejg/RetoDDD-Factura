@@ -15,7 +15,7 @@ public class ProductoAgregado extends DomainEvent {
 
 
     public ProductoAgregado(ProductoId productoId, Nombre nombre, Valor precio, Descripcion descripcion) {
-        super("producto.agregado");
+        super("supermercado.factura.productoAgregado");
         this.productoId = productoId;
         this.nombre = nombre;
         this.precio = precio;

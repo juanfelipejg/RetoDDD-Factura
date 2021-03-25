@@ -12,7 +12,7 @@ public class ClienteRegistrado extends DomainEvent {
 
 
     public ClienteRegistrado(ClienteId clienteId, Nombre nombre, Cedula cedula, Telefono telefono ) {
-        super("cliente.registrado");
+        super("supermercado.factura.clienteRegistrado");
         this.clienteId = clienteId;
         this.nombre = nombre;
         this.cedula = cedula;
